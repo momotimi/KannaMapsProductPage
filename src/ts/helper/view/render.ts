@@ -116,7 +116,7 @@ function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
 
     if (!nameEl || !priceEl || !unavailableDotEl) return;
 
-    nameEl.innerHTML = apothecary.name || 'n.v.';
+    nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
     priceEl.innerHTML = `${apothecary.price.toString()}` || 'n.v.';
     unavailableDotEl.style.display = apothecary.available ? 'none' : 'block';
 
@@ -299,7 +299,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       effectLinkEl.href = `/?effekt=${slugify(effect.text)}`;
     } else {
       effectNameEl.innerHTML = 'n.v.';
-      effectPercentageEl.innerHTML = '(n.v.%)';
+      effectPercentageEl.innerHTML = '(-)';
     }
   });
 
@@ -330,7 +330,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       sideEffectLinkEl.href = `/?nebenwirkung=${slugify(sideEffect.text)}`;
     } else {
       sideEffectNameEl.innerHTML = 'n.v.';
-      sideEffectPercentageEl.innerHTML = '(n.v.%)';
+      sideEffectPercentageEl.innerHTML = '(-)';
     }
   });
 
@@ -357,7 +357,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       tasteLinkEl.href = `/?geschmack=${slugify(taste.text)}`;
     } else {
       tasteNameEl.innerHTML = 'n.v.';
-      tastePercentageEl.innerHTML = '(n.v.%)';
+      tastePercentageEl.innerHTML = '(-)';
     }
   });
 
@@ -394,7 +394,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       )}`;
     } else {
       areaOfApplicationNameEl.innerHTML = 'n.v.';
-      areaOfApplicationPercentageEl.innerHTML = '(n.v.%)';
+      areaOfApplicationPercentageEl.innerHTML = '(-)';
     }
   });
 
@@ -419,7 +419,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       qualityLinkEl.href = `/?qualität=${slugify(quality.text)}`;
     } else {
       qualityNameEl.innerHTML = 'n.v.';
-      qualityPercentageEl.innerHTML = '(n.v.%)';
+      qualityPercentageEl.innerHTML = '(-)';
     }
   });
 
