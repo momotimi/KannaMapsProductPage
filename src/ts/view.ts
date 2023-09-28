@@ -1,9 +1,8 @@
 // + Imports +
 
 // Custom
-import * as config from './config';
-import render from './helper/view/render';
 import elements from './helper/view/elements';
+import render from './helper/view/render';
 
 // + Exports +
 export default function init(state: any) {

@@ -1,7 +1,6 @@
 // + Imports +
 
 // Custom
-import * as config from '../../config';
 
 // + Functions +
 

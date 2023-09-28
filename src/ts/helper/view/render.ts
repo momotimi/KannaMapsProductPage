@@ -3,8 +3,6 @@
 // Custom
 import * as config from '../../config';
 import * as utils from './utils';
-import renderCard from './renderCard';
-import * as model from '../../model';
 
 // + Exports +
 export default function (showSkeleton: boolean) {
@@ -91,28 +89,36 @@ function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
   const templateEl = apothecaryListEl
     ?.querySelector<HTMLElement>('[c-el="apothecary"]')
     ?.cloneNode(true) as HTMLElement | undefined;
+  const typeEl = parentEl.querySelector<HTMLElement>('[c-el="type"]');
+  const strainEl = parentEl.querySelector<HTMLElement>('[c-el="strain"]');
 
   console.log('apothecaries', apothecaries);
   console.log('apothecaryListEl', apothecaryListEl);
   console.log('templateEl', templateEl);
 
-  if (!apothecaryListEl || !templateEl) return;
+  if (!apothecaryListEl || !templateEl || !typeEl || !strainEl) return;
 
+  typeEl.innerHTML = data.data?.type || 'n.v.';
+  strainEl.innerHTML = data.data?.strain || 'n.v.';
   apothecaryListEl.innerHTML = '';
 
   apothecaries.forEach((apothecary: any) => {
     const apothecaryEl = templateEl.cloneNode(true) as HTMLElement;
     const nameEl = apothecaryEl.querySelector<HTMLElement>('[c-el="name"]');
     const priceEl = apothecaryEl.querySelector<HTMLElement>('[c-el="price"]');
+    const unavailableDotEl = apothecaryEl.querySelector<HTMLElement>(
+      '[c-el="unavailable-dot"]'
+    );
 
     console.log('apothecaryEl', apothecaryEl);
     console.log('nameEl', nameEl);
     console.log('priceEl', priceEl);
 
-    if (!nameEl || !priceEl) return;
+    if (!nameEl || !priceEl || !unavailableDotEl) return;
 
     nameEl.innerHTML = apothecary.name || 'n.v.';
-    priceEl.innerHTML = apothecary.price.toString() || 'n.v.';
+    priceEl.innerHTML = `${apothecary.price.toString()}` || 'n.v.';
+    unavailableDotEl.style.display = apothecary.available ? 'none' : 'block';
 
     apothecaryListEl.appendChild(apothecaryEl);
   });

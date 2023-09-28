@@ -1,7 +1,6 @@
 // + Imports +
 
 // Base
-import { async } from 'regenerator-runtime';
 
 // Custom
 import * as config from '../../config';
