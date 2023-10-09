@@ -117,7 +117,7 @@ function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
     if (!nameEl || !priceEl || !unavailableDotEl) return;
 
     nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
-    priceEl.innerHTML = `${apothecary.price.toString()}` || 'n.v.';
+    priceEl.innerHTML = apothecary.price ? apothecary.price.toString() : 'n.v.';
     unavailableDotEl.style.display = apothecary.available ? 'none' : 'block';
 
     apothecaryListEl.appendChild(apothecaryEl);
