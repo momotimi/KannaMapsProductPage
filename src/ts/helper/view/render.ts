@@ -195,7 +195,7 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
 
   // top area of application
   const topAreaOfApplication = getAreasOfApplication(
-    data.data.community_data.area_of_application_rough
+    data.data.community_data.detailed.area_of_application
   )[0];
   const topAreaOfApplicationEl = parentEl.querySelector<HTMLElement>(
     '[c-el="area-of-application"]'
@@ -203,24 +203,26 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
 
   if (topAreaOfApplicationEl) {
     topAreaOfApplicationEl.innerHTML = topAreaOfApplication
-      ? topAreaOfApplication.text
+      ? topAreaOfApplication.name
       : 'n.v.';
   }
 
   // top effect
-  const topEffect = getEffects(data.data.community_data.effects, 'effect')[0];
+  const topEffect = getPositiveEffects(
+    data.data.community_data.detailed.positive_effects
+  )[0];
   const topEffectEl = parentEl.querySelector<HTMLElement>('[c-el="effect"]');
 
   if (topEffectEl) {
-    topEffectEl.innerHTML = topEffect ? topEffect.text : 'n.v.';
+    topEffectEl.innerHTML = topEffect ? topEffect.name : 'n.v.';
   }
 
   // top taste
-  const topTaste = getTastes(data.data.community_data.taste)[0];
+  const topTaste = getTastes(data.data.community_data.detailed.taste)[0];
   const topTasteEl = parentEl.querySelector<HTMLElement>('[c-el="taste"]');
 
   if (topTasteEl) {
-    topTasteEl.innerHTML = topTaste ? topTaste.text : 'n.v.';
+    topTasteEl.innerHTML = topTaste ? topTaste.name : 'n.v.';
   }
 
   // review stars
@@ -280,7 +282,9 @@ function renderStars(parentEl: HTMLElement, rating: number, ratings: number) {
 
 function renderCommunityData(parentEl: HTMLElement, data: any) {
   // effects
-  const effects = getEffects(data.data.community_data.effects, 'effect');
+  const effects = getPositiveEffects(
+    data.data.community_data.detailed.positive_effects
+  );
   const effectsEls = parentEl.querySelectorAll<HTMLElement>('[c-el="effect"]');
 
   effectsEls.forEach((el, index) => {
@@ -294,9 +298,9 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     if (!effectNameEl || !effectPercentageEl || !effectLinkEl) return;
 
     if (effect) {
-      effectNameEl.innerHTML = effect.text;
+      effectNameEl.innerHTML = effect.name;
       effectPercentageEl.innerHTML = `(${effect.percentage}%)`;
-      effectLinkEl.href = `/?effekt=${slugify(effect.text)}`;
+      effectLinkEl.href = `/?effekt=${slugify(effect.name)}`;
     } else {
       effectNameEl.innerHTML = 'n.v.';
       effectPercentageEl.innerHTML = '(-)';
@@ -304,9 +308,8 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
   });
 
   // side effects
-  const sideEffects = getEffects(
-    data.data.community_data.effects,
-    'side_effect'
+  const sideEffects = getSideEffects(
+    data.data.community_data.detailed.side_effects
   );
   const sideEffectsEls = parentEl.querySelectorAll<HTMLElement>(
     '[c-el="side-effect"]'
@@ -325,9 +328,9 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       return;
 
     if (sideEffect) {
-      sideEffectNameEl.innerHTML = sideEffect.text;
+      sideEffectNameEl.innerHTML = sideEffect.name;
       sideEffectPercentageEl.innerHTML = `(${sideEffect.percentage}%)`;
-      sideEffectLinkEl.href = `/?nebenwirkung=${slugify(sideEffect.text)}`;
+      sideEffectLinkEl.href = `/?nebenwirkung=${slugify(sideEffect.name)}`;
     } else {
       sideEffectNameEl.innerHTML = 'n.v.';
       sideEffectPercentageEl.innerHTML = '(-)';
@@ -338,7 +341,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
   // TODO: implement
 
   // tastes
-  const tastes = getTastes(data.data.community_data.taste);
+  const tastes = getTastes(data.data.community_data.detailed.taste);
   const tastesEls = parentEl.querySelectorAll<HTMLElement>('[c-el="taste"]');
 
   tastesEls.forEach((el, index) => {
@@ -352,9 +355,9 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     if (!tasteNameEl || !tastePercentageEl || !tasteLinkEl) return;
 
     if (taste) {
-      tasteNameEl.innerHTML = taste.text;
+      tasteNameEl.innerHTML = taste.name;
       tastePercentageEl.innerHTML = `(${taste.percentage}%)`;
-      tasteLinkEl.href = `/?geschmack=${slugify(taste.text)}`;
+      tasteLinkEl.href = `/?geschmack=${slugify(taste.name)}`;
     } else {
       tasteNameEl.innerHTML = 'n.v.';
       tastePercentageEl.innerHTML = '(-)';
@@ -363,7 +366,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
 
   // areas of application
   const areasOfApplication = getAreasOfApplication(
-    data.data.community_data.area_of_application_rough
+    data.data.community_data.detailed.area_of_application
   );
   const areasOfApplicationEls = parentEl.querySelectorAll<HTMLElement>(
     '[c-el="area-of-application"]'
@@ -387,10 +390,10 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       return;
 
     if (areaOfApplication) {
-      areaOfApplicationNameEl.innerHTML = areaOfApplication.text;
+      areaOfApplicationNameEl.innerHTML = areaOfApplication.name;
       areaOfApplicationPercentageEl.innerHTML = `(${areaOfApplication.percentage}%)`;
       areaOfApplicationLinkEl.href = `/?anwendungsgebiet=${slugify(
-        areaOfApplication.text
+        areaOfApplication.name
       )}`;
     } else {
       areaOfApplicationNameEl.innerHTML = 'n.v.';
@@ -399,7 +402,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
   });
 
   // qualities
-  const qualities = getQualities(data.data.community_data.quality);
+  const qualities = getQualities(data.data.community_data.detailed.quality);
   const qualitiesEls =
     parentEl.querySelectorAll<HTMLElement>('[c-el="quality"]');
 
@@ -414,9 +417,9 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     if (!qualityNameEl || !qualityPercentageEl || !qualityLinkEl) return;
 
     if (quality) {
-      qualityNameEl.innerHTML = quality.text;
+      qualityNameEl.innerHTML = quality.name;
       qualityPercentageEl.innerHTML = `(${quality.percentage}%)`;
-      qualityLinkEl.href = `/?qualität=${slugify(quality.text)}`;
+      qualityLinkEl.href = `/?qualität=${slugify(quality.name)}`;
     } else {
       qualityNameEl.innerHTML = 'n.v.';
       qualityPercentageEl.innerHTML = '(-)';
@@ -467,16 +470,35 @@ function getTerpenes(data: Record<string, any>) {
   return terpenes;
 }
 
-function getEffects(data: any[], type: 'effect' | 'side_effect') {
-  const effects = data.filter((effect: any) => effect.type === type);
+function getPositiveEffects(data: any[]) {
+  const effects = data;
   const totalConfirmations = effects.reduce(
-    (acc, effect) => acc + effect.confirmations,
+    (acc, effect) => acc + effect.total_confirmations,
     0
   );
-  effects.sort((a, b) => b.confirmations - a.confirmations);
+  effects.sort((a, b) => b.total_confirmations - a.total_confirmations);
   const effectsWithPercentage = effects.map(effect => ({
     ...effect,
-    percentage: Math.round((effect.confirmations / totalConfirmations) * 100),
+    percentage: Math.round(
+      (effect.total_confirmations / totalConfirmations) * 100
+    ),
+  }));
+
+  return effectsWithPercentage;
+}
+
+function getSideEffects(data: any[]) {
+  const effects = data;
+  const totalConfirmations = effects.reduce(
+    (acc, effect) => acc + effect.total_confirmations,
+    0
+  );
+  effects.sort((a, b) => b.total_confirmations - a.total_confirmations);
+  const effectsWithPercentage = effects.map(effect => ({
+    ...effect,
+    percentage: Math.round(
+      (effect.total_confirmations / totalConfirmations) * 100
+    ),
   }));
 
   return effectsWithPercentage;
@@ -485,13 +507,15 @@ function getEffects(data: any[], type: 'effect' | 'side_effect') {
 function getTastes(data: any[]) {
   const tastes = data;
   const totalConfirmations = tastes.reduce(
-    (acc, taste) => acc + taste.confirmations,
+    (acc, taste) => acc + taste.total_confirmations,
     0
   );
-  tastes.sort((a, b) => b.confirmations - a.confirmations);
+  tastes.sort((a, b) => b.total_confirmations - a.total_confirmations);
   const tastesWithPercentage = tastes.map(taste => ({
     ...taste,
-    percentage: Math.round((taste.confirmations / totalConfirmations) * 100),
+    percentage: Math.round(
+      (taste.total_confirmations / totalConfirmations) * 100
+    ),
   }));
 
   return tastesWithPercentage;
@@ -500,15 +524,17 @@ function getTastes(data: any[]) {
 function getAreasOfApplication(data: any[]) {
   const areasOfApplication = data;
   const totalConfirmations = areasOfApplication.reduce(
-    (acc, areaOfApplication) => acc + areaOfApplication.confirmations,
+    (acc, areaOfApplication) => acc + areaOfApplication.total_confirmations,
     0
   );
-  areasOfApplication.sort((a, b) => b.confirmations - a.confirmations);
+  areasOfApplication.sort(
+    (a, b) => b.total_confirmations - a.total_confirmations
+  );
   const areasOfApplicationWithPercentage = areasOfApplication.map(
     areaOfApplication => ({
       ...areaOfApplication,
       percentage: Math.round(
-        (areaOfApplication.confirmations / totalConfirmations) * 100
+        (areaOfApplication.total_confirmations / totalConfirmations) * 100
       ),
     })
   );
@@ -519,13 +545,15 @@ function getAreasOfApplication(data: any[]) {
 function getQualities(data: any[]) {
   const qualities = data;
   const totalConfirmations = qualities.reduce(
-    (acc, quality) => acc + quality.confirmations,
+    (acc, quality) => acc + quality.total_confirmations,
     0
   );
-  qualities.sort((a, b) => b.confirmations - a.confirmations);
+  qualities.sort((a, b) => b.total_confirmations - a.total_confirmations);
   const qualitiesWithPercentage = qualities.map(quality => ({
     ...quality,
-    percentage: Math.round((quality.confirmations / totalConfirmations) * 100),
+    percentage: Math.round(
+      (quality.total_confirmations / totalConfirmations) * 100
+    ),
   }));
 
   return qualitiesWithPercentage;
