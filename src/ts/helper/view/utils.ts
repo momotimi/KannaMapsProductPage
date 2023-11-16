@@ -35,6 +35,10 @@ export function capitalizeEveryWord(inputString: string) {
   const capitalizedString = inputString
     .split(/\b/)
     .map((part, index) => {
+      if (capitalizedWords.length === 0) {
+        return '';
+      }
+
       if (part.match(/[A-Za-z]/)) {
         return capitalizedWords.shift();
       } else {

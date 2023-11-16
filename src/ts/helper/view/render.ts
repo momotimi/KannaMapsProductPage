@@ -487,7 +487,7 @@ function getTerpenes(data: Record<string, any>) {
     'Gehalt—CBD',
     'Hersteller',
     'Bestrahlung',
-    'Terpendichte mg/g',
+    'Terpendichte—mg/g',
   ];
 
   const terpenes = Object.keys(data)
