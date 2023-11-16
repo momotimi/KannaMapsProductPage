@@ -175,8 +175,11 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
     const terpene = terpenes[index];
     const terpeneNameEl = el.querySelector<HTMLElement>('[c-el="name"]');
     const terpeneColorEl = el.querySelector<HTMLElement>('[c-el="color"]');
+    const terpenePercentageEl = el.querySelector<HTMLElement>(
+      '[c-el="percentage"]'
+    );
 
-    if (!terpeneNameEl || !terpeneColorEl) return;
+    if (!terpeneNameEl || !terpeneColorEl || !terpenePercentageEl) return;
 
     terpeneColorEl.classList.remove(
       'alpha-humulene',
@@ -188,8 +191,10 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
     if (terpene) {
       terpeneNameEl.innerHTML = terpene.key;
       terpeneColorEl.classList.add(terpene.key.toLowerCase().replace(' ', '-'));
+      terpenePercentageEl.innerHTML = `${terpene.percentage}%`;
     } else {
       terpeneNameEl.innerHTML = 'n.v.';
+      terpenePercentageEl.innerHTML = '-';
     }
   });
 
@@ -338,7 +343,34 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
   });
 
   // activities
-  // TODO: implement
+  const activities = getActivities(
+    data.data.community_data.detailed.activities
+  );
+  const activitiesEls =
+    parentEl.querySelectorAll<HTMLElement>('[c-el="activity"]');
+
+  console.log('activities', activities);
+  console.log('activitiesEls', activitiesEls);
+
+  activitiesEls.forEach((el, index) => {
+    const activity = activities[index];
+    const activityNameEl = el.querySelector<HTMLElement>('[c-el="name"]');
+    const activityPercentageEl = el.querySelector<HTMLElement>(
+      '[c-el="percentage"]'
+    );
+    const activityLinkEl = el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+
+    if (!activityNameEl || !activityPercentageEl || !activityLinkEl) return;
+
+    if (activity) {
+      activityNameEl.innerHTML = activity.name;
+      activityPercentageEl.innerHTML = `(${activity.percentage}%)`;
+      activityLinkEl.href = `/?aktivität=${slugify(activity.name)}`;
+    } else {
+      activityNameEl.innerHTML = 'n.v.';
+      activityPercentageEl.innerHTML = '(-)';
+    }
+  });
 
   // tastes
   const tastes = getTastes(data.data.community_data.detailed.taste);
@@ -463,9 +495,22 @@ function getTerpenes(data: Record<string, any>) {
     .map(key => ({
       key: utils.capitalizeEveryWord(key.replace('—', ' ')),
       value: data[key],
+      percentage: 0,
     }));
 
   terpenes.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
+  const totalTerpenes = terpenes.reduce(
+    (acc, terpene) => acc + parseFloat(terpene.value),
+    0
+  );
+
+  terpenes.forEach(terpene => {
+    terpene.percentage = Math.round(
+      (parseFloat(terpene.value) / totalTerpenes) * 100
+    );
+  });
+
+  console.log('terpenes', terpenes);
 
   return terpenes;
 }
@@ -502,6 +547,23 @@ function getSideEffects(data: any[]) {
   }));
 
   return effectsWithPercentage;
+}
+
+function getActivities(data: any[]) {
+  const activities = data;
+  const totalConfirmations = activities.reduce(
+    (acc, activity) => acc + activity.total_confirmations,
+    0
+  );
+  activities.sort((a, b) => b.total_confirmations - a.total_confirmations);
+  const activitiesWithPercentage = activities.map(activity => ({
+    ...activity,
+    percentage: Math.round(
+      (activity.total_confirmations / totalConfirmations) * 100
+    ),
+  }));
+
+  return activitiesWithPercentage;
 }
 
 function getTastes(data: any[]) {
