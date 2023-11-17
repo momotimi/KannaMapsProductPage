@@ -114,8 +114,8 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
     nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
     cityEl.innerHTML = apothecary._vendor.Stadt || 'n.v.';
     priceEl.innerHTML = apothecary.price ? apothecary.price.toFixed(2) : 'n.v.';
-    availableEl.style.display = apothecary.available ? 'block' : 'none';
-    unavailableEl.style.display = apothecary.available ? 'none' : 'block';
+    availableEl.style.display = apothecary.available ? 'flex' : 'none';
+    unavailableEl.style.display = apothecary.available ? 'none' : 'flex';
 
     apothecaryListEl.appendChild(apothecaryEl);
   });
@@ -154,7 +154,13 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
       '[c-el="zip-and-city"]'
     );
     const emailEl = apothecaryEl.querySelector<HTMLElement>('[c-el="email"]');
+    const emailLinkEl = apothecaryEl.querySelector<HTMLAnchorElement>(
+      '[c-el="email-link"]'
+    );
     const phoneEl = apothecaryEl.querySelector<HTMLElement>('[c-el="phone"]');
+    const phoneLinkEl = apothecaryEl.querySelector<HTMLAnchorElement>(
+      '[c-el="phone-link"]'
+    );
 
     if (
       !nameEl ||
@@ -165,24 +171,24 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
       !addressEl ||
       !zipAndCityEl ||
       !emailEl ||
-      !phoneEl
+      !phoneEl ||
+      !emailLinkEl ||
+      !phoneLinkEl
     )
       return;
 
     linkEl.href = apothecary._vendor.live_url;
     nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
     priceEl.innerHTML = apothecary.price ? apothecary.price.toFixed(2) : 'n.v.';
-    availableEl.style.display = apothecary.available ? 'block' : 'none';
-    unavailableEl.style.display = apothecary.available ? 'none' : 'block';
+    availableEl.style.display = apothecary.available ? 'flex' : 'none';
+    unavailableEl.style.display = apothecary.available ? 'none' : 'flex';
     addressEl.innerHTML = apothecary._vendor.strasse_und_nummer || 'n.v.';
     zipAndCityEl.innerHTML =
       `${apothecary._vendor.PLZ} ${apothecary._vendor.Stadt}` || 'n.v.';
     emailEl.innerHTML = apothecary._vendor['E-Mail'] || 'n.v.';
-    (
-      emailEl as HTMLAnchorElement
-    ).href = `mailto:${apothecary._vendor['E-Mail']}`;
+    emailLinkEl.href = `mailto:${apothecary._vendor['E-Mail']}`;
     phoneEl.innerHTML = apothecary._vendor.Telefon || 'n.v.';
-    (phoneEl as HTMLAnchorElement).href = `tel:${apothecary._vendor.Telefon}`;
+    phoneLinkEl.href = `tel:${apothecary._vendor.Telefon}`;
 
     apothecaryListEl.appendChild(apothecaryEl);
   });
