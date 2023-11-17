@@ -11,6 +11,8 @@ export default function (showSkeleton: boolean) {
   const detailsEl: HTMLElement = state.elements.productDetails;
   const communityEl: HTMLElement = state.elements.communityData;
   const apothecariesPopupEl: HTMLElement = state.elements.apothecariesPopup;
+  const topApothecariesListEl: HTMLElement = state.elements.topApothecariesList;
+  const allApothecariesListEl: HTMLElement = state.elements.allApothecariesList;
   const data = state.productData;
   const skeletonFadeDuration = parseFloat(
     config.SKELETON_FADE_DURATION.toString()
@@ -77,7 +79,113 @@ export default function (showSkeleton: boolean) {
     renderProductDetails(detailsEl, data);
     renderCommunityData(communityEl, data);
     renderApothecariesPopup(apothecariesPopupEl, data);
+    renderTopApothecaries(topApothecariesListEl, data);
+    renderAllApothecaries(allApothecariesListEl, data);
   }
+}
+
+function renderTopApothecaries(parentEl: HTMLElement, data: any) {
+  console.log('renderTopApothecaries');
+  const apothecaries = getApothecaries(data.data.apothecaries_data.detailed);
+  const apothecaryListEl = parentEl;
+  const templateEl = apothecaryListEl
+    ?.querySelector<HTMLElement>('[c-el="apothecary"]')
+    ?.cloneNode(true) as HTMLElement | undefined;
+  if (!apothecaryListEl || !templateEl) return;
+
+  apothecaryListEl.innerHTML = '';
+
+  // loop through top 4 apothecaries
+  apothecaries.slice(0, 4).forEach((apothecary: any) => {
+    const apothecaryEl = templateEl.cloneNode(true) as HTMLElement;
+    const nameEl = apothecaryEl.querySelector<HTMLElement>('[c-el="name"]');
+    const cityEl = apothecaryEl.querySelector<HTMLElement>('[c-el="city"]');
+    const priceEl = apothecaryEl.querySelector<HTMLElement>('[c-el="price"]');
+    const availableEl =
+      apothecaryEl.querySelector<HTMLElement>('[c-el="available"]');
+    const unavailableEl = apothecaryEl.querySelector<HTMLElement>(
+      '[c-el="unavailable"]'
+    );
+
+    if (!nameEl || !cityEl || !priceEl || !availableEl || !unavailableEl)
+      return;
+
+    (apothecaryEl as HTMLAnchorElement).href = apothecary._vendor.live_url;
+    nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
+    cityEl.innerHTML = apothecary._vendor.Stadt || 'n.v.';
+    priceEl.innerHTML = apothecary.price ? apothecary.price.toFixed(2) : 'n.v.';
+    availableEl.style.display = apothecary.available ? 'block' : 'none';
+    unavailableEl.style.display = apothecary.available ? 'none' : 'block';
+
+    apothecaryListEl.appendChild(apothecaryEl);
+  });
+}
+
+function renderAllApothecaries(parentEl: HTMLElement, data: any) {
+  console.log('renderAllApothecaries');
+  const apothecaries = getApothecaries(data.data.apothecaries_data.detailed);
+  const apothecaryListEl = parentEl;
+  const templateEl = apothecaryListEl
+    ?.querySelector<HTMLElement>('[c-el="apothecary"]')
+    ?.cloneNode(true) as HTMLElement | undefined;
+  console.log('apothecaries', apothecaries);
+  console.log('apothecaryListEl', apothecaryListEl);
+  console.log('templateEl', templateEl);
+  console.log('parentEl', parentEl);
+  if (!apothecaryListEl || !templateEl) return;
+
+  apothecaryListEl.innerHTML = '';
+
+  // loop through top 4 apothecaries
+  apothecaries.forEach((apothecary: any) => {
+    const apothecaryEl = templateEl.cloneNode(true) as HTMLElement;
+    const nameEl = apothecaryEl.querySelector<HTMLElement>('[c-el="name"]');
+    const priceEl = apothecaryEl.querySelector<HTMLElement>('[c-el="price"]');
+    const availableEl =
+      apothecaryEl.querySelector<HTMLElement>('[c-el="available"]');
+    const unavailableEl = apothecaryEl.querySelector<HTMLElement>(
+      '[c-el="unavailable"]'
+    );
+    const linkEl =
+      apothecaryEl.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const addressEl =
+      apothecaryEl.querySelector<HTMLElement>('[c-el="address"]');
+    const zipAndCityEl = apothecaryEl.querySelector<HTMLElement>(
+      '[c-el="zip-and-city"]'
+    );
+    const emailEl = apothecaryEl.querySelector<HTMLElement>('[c-el="email"]');
+    const phoneEl = apothecaryEl.querySelector<HTMLElement>('[c-el="phone"]');
+
+    if (
+      !nameEl ||
+      !priceEl ||
+      !availableEl ||
+      !unavailableEl ||
+      !linkEl ||
+      !addressEl ||
+      !zipAndCityEl ||
+      !emailEl ||
+      !phoneEl
+    )
+      return;
+
+    linkEl.href = apothecary._vendor.live_url;
+    nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
+    priceEl.innerHTML = apothecary.price ? apothecary.price.toFixed(2) : 'n.v.';
+    availableEl.style.display = apothecary.available ? 'block' : 'none';
+    unavailableEl.style.display = apothecary.available ? 'none' : 'block';
+    addressEl.innerHTML = apothecary._vendor.strasse_und_nummer || 'n.v.';
+    zipAndCityEl.innerHTML =
+      `${apothecary._vendor.PLZ} ${apothecary._vendor.Stadt}` || 'n.v.';
+    emailEl.innerHTML = apothecary._vendor['E-Mail'] || 'n.v.';
+    (
+      emailEl as HTMLAnchorElement
+    ).href = `mailto:${apothecary._vendor['E-Mail']}`;
+    phoneEl.innerHTML = apothecary._vendor.Telefon || 'n.v.';
+    (phoneEl as HTMLAnchorElement).href = `tel:${apothecary._vendor.Telefon}`;
+
+    apothecaryListEl.appendChild(apothecaryEl);
+  });
 }
 
 function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
@@ -458,6 +566,12 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     }
   });
 
+  // apothecaries
+  // top 4 apothecaries
+  const apothecaries = getApothecaries(data.data.apothecaries_data.detailed);
+
+  // all apothecaries
+
   // review stars
   const rating = data.data.community_data.rating;
   const ratings = data.data.community_data.ratings;
@@ -619,6 +733,12 @@ function getQualities(data: any[]) {
   }));
 
   return qualitiesWithPercentage;
+}
+
+function getApothecaries(data: any[]) {
+  const apothecaries = data;
+  apothecaries.sort((a, b) => a.price - b.price);
+  return apothecaries;
 }
 
 function getRandomID() {

@@ -16,6 +16,12 @@ export default function () {
   const apothecariesPopup = document.querySelector(
     '[c-el="apothecaries-popup"]'
   );
+  const topApothecariesList = document.querySelector(
+    '[c-el="top-apothecaries-list"]'
+  );
+  const allApothecariesList = document.querySelector(
+    '[c-el="all-apothecaries-list"]'
+  );
 
   // Manipulate
 
@@ -25,6 +31,8 @@ export default function () {
   obj.productDetails = productDetails;
   obj.communityData = communityData;
   obj.apothecariesPopup = apothecariesPopup;
+  obj.topApothecariesList = topApothecariesList;
+  obj.allApothecariesList = allApothecariesList;
 
   // Return
   return obj;
