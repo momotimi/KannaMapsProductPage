@@ -139,6 +139,7 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
   // loop through top 4 apothecaries
   apothecaries.forEach((apothecary: any) => {
     const apothecaryEl = templateEl.cloneNode(true) as HTMLElement;
+    apothecaryEl.setAttribute('data-apothecary', JSON.stringify(apothecary));
     const nameEl = apothecaryEl.querySelector<HTMLElement>('[c-el="name"]');
     const priceEl = apothecaryEl.querySelector<HTMLElement>('[c-el="price"]');
     const availableEl =
