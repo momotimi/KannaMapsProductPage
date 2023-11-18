@@ -119,6 +119,9 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
 
     apothecaryListEl.appendChild(apothecaryEl);
   });
+
+  const event = new CustomEvent("KannaMaps:build");
+  window.dispatchEvent(event);
 }
 
 function renderAllApothecaries(parentEl: HTMLElement, data: any) {
