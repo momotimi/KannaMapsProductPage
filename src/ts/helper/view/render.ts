@@ -85,7 +85,6 @@ export default function (showSkeleton: boolean) {
 }
 
 function renderTopApothecaries(parentEl: HTMLElement, data: any) {
-  console.log('renderTopApothecaries');
   const apothecaries = getApothecaries(data.data.apothecaries_data.detailed);
   const apothecaryListEl = parentEl;
   const templateEl = apothecaryListEl
@@ -94,6 +93,14 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
   if (!apothecaryListEl || !templateEl) return;
 
   apothecaryListEl.innerHTML = '';
+
+  if (apothecaries.length === 0) {
+    apothecaryListEl.style.display = 'none';
+    const emptyStateEl = document.querySelector<HTMLElement>(
+      '[c-el="apo-list-empty-state"]'
+    );
+    if (emptyStateEl) emptyStateEl.style.display = 'block';
+  }
 
   // loop through top 4 apothecaries
   apothecaries.slice(0, 4).forEach((apothecary: any) => {
@@ -106,8 +113,17 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
     const unavailableEl = apothecaryEl.querySelector<HTMLElement>(
       '[c-el="unavailable"]'
     );
+    const apoLinkEls =
+      apothecaryEl.querySelectorAll<HTMLAnchorElement>('a[c-el="apo-link"]');
 
-    if (!nameEl || !cityEl || !priceEl || !availableEl || !unavailableEl)
+    if (
+      !nameEl ||
+      !cityEl ||
+      !priceEl ||
+      !availableEl ||
+      !unavailableEl ||
+      !apoLinkEls
+    )
       return;
 
     (apothecaryEl as HTMLAnchorElement).href = apothecary._vendor.live_url;
@@ -117,24 +133,23 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
     availableEl.style.display = apothecary.available ? 'flex' : 'none';
     unavailableEl.style.display = apothecary.available ? 'none' : 'flex';
 
+    apoLinkEls.forEach(el => {
+      el.href = apothecary._vendor.live_url;
+    });
+
     apothecaryListEl.appendChild(apothecaryEl);
   });
 
-  const event = new CustomEvent("KannaMaps:build");
+  const event = new CustomEvent('KannaMaps:build');
   window.dispatchEvent(event);
 }
 
 function renderAllApothecaries(parentEl: HTMLElement, data: any) {
-  console.log('renderAllApothecaries');
   const apothecaries = getApothecaries(data.data.apothecaries_data.detailed);
   const apothecaryListEl = parentEl;
   const templateEl = apothecaryListEl
     ?.querySelector<HTMLElement>('[c-el="apothecary"]')
     ?.cloneNode(true) as HTMLElement | undefined;
-  console.log('apothecaries', apothecaries);
-  console.log('apothecaryListEl', apothecaryListEl);
-  console.log('templateEl', templateEl);
-  console.log('parentEl', parentEl);
   if (!apothecaryListEl || !templateEl) return;
 
   apothecaryListEl.innerHTML = '';
@@ -150,8 +165,8 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
     const unavailableEl = apothecaryEl.querySelector<HTMLElement>(
       '[c-el="unavailable"]'
     );
-    const linkEl =
-      apothecaryEl.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const apoLinkEls =
+      apothecaryEl.querySelectorAll<HTMLAnchorElement>('a[c-el="apo-link"]');
     const addressEl =
       apothecaryEl.querySelector<HTMLElement>('[c-el="address"]');
     const zipAndCityEl = apothecaryEl.querySelector<HTMLElement>(
@@ -171,7 +186,7 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
       !priceEl ||
       !availableEl ||
       !unavailableEl ||
-      !linkEl ||
+      !apoLinkEls ||
       !addressEl ||
       !zipAndCityEl ||
       !emailEl ||
@@ -181,7 +196,9 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
     )
       return;
 
-    linkEl.href = apothecary._vendor.live_url;
+    apoLinkEls.forEach(el => {
+      el.href = apothecary._vendor.live_url;
+    });
     nameEl.innerHTML = apothecary._vendor.name || 'n.v.';
     priceEl.innerHTML = apothecary.price ? apothecary.price.toFixed(2) : 'n.v.';
     availableEl.style.display = apothecary.available ? 'flex' : 'none';
@@ -199,7 +216,6 @@ function renderAllApothecaries(parentEl: HTMLElement, data: any) {
 }
 
 function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
-  console.log('renderApothecariesPopup', data);
   const apothecaries = data.data.apothecaries_data.detailed;
   const apothecaryListEl = parentEl.querySelector<HTMLElement>(
     '[c-el="apothecary-list"]'
@@ -209,10 +225,6 @@ function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
     ?.cloneNode(true) as HTMLElement | undefined;
   const typeEl = parentEl.querySelector<HTMLElement>('[c-el="type"]');
   const strainEl = parentEl.querySelector<HTMLElement>('[c-el="strain"]');
-
-  console.log('apothecaries', apothecaries);
-  console.log('apothecaryListEl', apothecaryListEl);
-  console.log('templateEl', templateEl);
 
   if (!apothecaryListEl || !templateEl || !typeEl || !strainEl) return;
 
@@ -227,10 +239,6 @@ function renderApothecariesPopup(parentEl: HTMLElement, data: any) {
     const unavailableDotEl = apothecaryEl.querySelector<HTMLElement>(
       '[c-el="unavailable-dot"]'
     );
-
-    console.log('apothecaryEl', apothecaryEl);
-    console.log('nameEl', nameEl);
-    console.log('priceEl', priceEl);
 
     if (!nameEl || !priceEl || !unavailableDotEl) return;
 
@@ -250,9 +258,6 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
   const notAvailableEl = parentEl.querySelector<HTMLElement>(
     '[c-el="not-available"]'
   );
-  console.log('isProductAvialable', isProductAvialable);
-  console.log('availableEl', availableEl);
-  console.log('notAvailableEl', notAvailableEl);
 
   if (isProductAvialable) {
     notAvailableEl?.classList.add('hide');
@@ -467,9 +472,6 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
   const activitiesEls =
     parentEl.querySelectorAll<HTMLElement>('[c-el="activity"]');
 
-  console.log('activities', activities);
-  console.log('activitiesEls', activitiesEls);
-
   activitiesEls.forEach((el, index) => {
     const activity = activities[index];
     const activityNameEl = el.querySelector<HTMLElement>('[c-el="name"]');
@@ -633,8 +635,6 @@ function getTerpenes(data: Record<string, any>) {
       (parseFloat(terpene.value) / totalTerpenes) * 100
     );
   });
-
-  console.log('terpenes', terpenes);
 
   return terpenes;
 }
