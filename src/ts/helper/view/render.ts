@@ -96,10 +96,12 @@ function renderTopApothecaries(parentEl: HTMLElement, data: any) {
 
   if (apothecaries.length === 0) {
     apothecaryListEl.style.display = 'none';
-    const emptyStateEl = document.querySelector<HTMLElement>(
+    const emptyStateEls = document.querySelectorAll<HTMLElement>(
       '[c-el="apo-list-empty-state"]'
     );
-    if (emptyStateEl) emptyStateEl.style.display = 'block';
+    emptyStateEls.forEach(el => {
+      el.style.display = 'block';
+    });
   }
 
   // loop through top 4 apothecaries
