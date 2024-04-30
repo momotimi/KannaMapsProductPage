@@ -13,6 +13,9 @@ export default function () {
   // Rendering
   const productDetails = document.querySelector('[c-el="product-details"]');
   const communityData = document.querySelector('[c-el="community-data"]');
+  const communityDataFull = document.querySelector(
+    '[c-el="community-data-full"]'
+  );
   const apothecariesPopup = document.querySelector(
     '[c-el="apothecaries-popup"]'
   );
@@ -30,6 +33,7 @@ export default function () {
   // Rendering
   obj.productDetails = productDetails;
   obj.communityData = communityData;
+  obj.communityDataFull = communityDataFull;
   obj.apothecariesPopup = apothecariesPopup;
   obj.topApothecariesList = topApothecariesList;
   obj.allApothecariesList = allApothecariesList;

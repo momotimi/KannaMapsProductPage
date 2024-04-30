@@ -4,12 +4,240 @@
 import * as config from '../../config';
 import * as utils from './utils';
 
+const PRODUCT_LIST_PAGE = '/old-home';
+
+const ICONS_MAP = {
+  'side-effect': {
+    aggression:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa038_Nebenwirkungen__Agression.svg',
+    appetitsteigerung:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa03d_Nebenwirkungen__Appetitsteigerung.svg',
+    'appetitsminderung/-losigkeit':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa035_Nebenwirkungen__Appetitlosigkeit.svg',
+    angst:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00d_Nebenwirkungen__Angst.svg',
+    vergesslichkeit:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff2_Nebenwirkungen__Vergesslichkeit.svg',
+    unruhe:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00c_Nebenwirkungen__Unruhe.svg',
+    antrieblosigkiet:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff3_Nebenwirkungen__Antriebslosigkeit.svg',
+    traurigkiet:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa017_Nebenwirkungen__Traurigkeit.svg',
+    kreislaufbeschwerden:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa015_Nebenwirkungen__Kreislaufbeschwerden.svg',
+    onbstipation:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff7_Nebenwirkungen__Obstipation.svg',
+    schwindel:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe5_Nebenwirkungen__Schwindel.svg',
+    halluzination:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fef_Nebenwirkungen__Halluzination.svg',
+    durchfall:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcf_Nebenwirkungen__Durchfall.svg',
+    reizempfindlichkeit:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa031_Nebenwirkungen__Reizempfindlichkeit.svg',
+    schwitzen:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff0_Nebenwirkungen__Schwitzen.svg',
+    derealisation:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa011_Nebenwirkungen__Derealisation.svg',
+    atemwegsreizung:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff5_Nebenwirkungen__Atemwegsreizung.svg',
+    euphorisch:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3f_Effekte_Euphorisch.svg',
+    entspannt:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f24_Effekte_Entspannt.svg',
+    empathisch:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
+    selbstbewusst:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f32_Effekte_Selbstbewusst.svg',
+    motiviert:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7d_Effekte_Motiviert.svg',
+    indifferent:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f40_Effekte_Indifferent.svg',
+    abgeschirmt:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
+    fokussiert:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
+    aktiv:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f37_Effekte_Aktiv.svg',
+    musikalisch:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f1f_Effekte_Musikalisch.svg',
+    humorvoll:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
+    kreativ:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f21_Effekte_Kreativ.svg',
+    sensibel:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f39_Effekte_Sensibel.svg',
+  },
+  taste: {
+    salzig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fad_Geschmack_Salzig.svg',
+    pflanzlich:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9faf_Geschmack_Pflanzlich.svg',
+    milchig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc0_Geschmack_Milchig.svg',
+    chemisch:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe6_Geschmack_Chemisch.svg',
+    chili:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9faa_Geschmack_Chili.svg',
+    'citrus mandarine':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f88_Citrus_Mandarine.svg',
+    'citrus limette':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa5_Citrus_Limette.svg',
+    'fruchtig waldbeere':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f82_Fruchtig_Waldbeere.svg',
+    pflaume:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc7_Fruchtig_Pflaume.svg',
+    citrus:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa2_Citrus_Citrus.svg',
+    'fruchtig ':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa3_Fruchtig_Fruchtig.svg',
+    'fruchtig melone':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc9_Fruchtig_Melone.svg',
+    'fruchtig pfirsich':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa6_Fruchtig_Pfirsich.svg',
+    'erdig walnuss':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f81_Erdig_Walnuss.svg',
+    'fruchtig mango':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa7_Fruchtig_Mango.svg',
+    'fruchtig ananas':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f79_Fruchtig_Ananas.svg',
+    'erdig tabak':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7c_Erdig_Tabak.svg',
+    'erdig tee':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa0_Erdig_Tee.svg',
+    'erdig erdnuss':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc5_Erdig_Erdnuss.svg',
+    'spicy ':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa1_Spicy_Spicy.svg',
+    'spicy chili':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f87_Spicy_Chilli.svg',
+    'spicy minze':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f84_Spicy_Minze.svg',
+    'spicy pfeffer':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f86_Spicy_Pfeffer.svg',
+    'cremig butter':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa9_Cremig_Butter.svg',
+    'gassy meersalz':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7a_Gassy_Meersalz.svg',
+    'gassy ':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f66_Gassy_Gassy.svg',
+    'cremig blauschimmel':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f68_Cremig_Blauschimmel.svg',
+    'gassy ammoniak':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f80_Gassy_Ammoniak.svg',
+    'blumig kirsche':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6c_Blumig_Kirsche.svg',
+    'blumig flieder':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f89_Blumig_Flieder.svg',
+    'blumig zitronengras':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f83_Blumig_Zitronengras.svg',
+    'gassy metallisch':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f61_Gassy_Metallisch.svg',
+    'blumig jasmin':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f69_Blumig_Jasmin.svg',
+    'cremig sahne':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6b_Cremig_Sahne.svg',
+    'citrus marakuja':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f85_Citrus_Marakuja.svg',
+    blumig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5e_Blumig_Blumig.svg',
+    'citrus zitrone':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f65_Citrus_Zitrone.svg',
+    cremig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6a_Cremig_Cremig.svg',
+    kräuter:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc8_Qualit%C3%A4t_Sehr%20trocken.svg',
+    gewürze:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc3_Geschmack_Gew%C3%BCrze.svg',
+  },
+  quality: {
+    'zu kleine buds':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcb_Qualit%C3%A4t_Zu%20kleine%20Buds.svg',
+    'genau richtig':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ffa_Qualit%C3%A4t_Genau%20richtig.svg',
+    'hoher anteil stegen':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe8_Qualit%C3%A4t_Hoher%20Anteil%20Stengel.svg',
+    schimmel:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc4_Qualit%C3%A4t_Schimmel.svg',
+    'sehr fest':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fca_Qualit%C3%A4t_Sehr%20fest.svg',
+    'zu große buds':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc2_Qualit%C3%A4t_Zu%20gro%C3%9Fe%20Buds.svg',
+    'sehr klebrig':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcc_Qualit%C3%A4t_Sehr%20klebrig.svg',
+    'samen in der blüte':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fbf_Qualit%C3%A4t_Samen%20in%20der%20Bl%C3%BCte.svg',
+    'sehr trocken':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc8_Qualit%C3%A4t_Sehr%20trocken.svg',
+  },
+  activity: {
+    'geistige arbeit':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f63_Aktivit%C3%A4ten__Geistige%20Arbeit.svg',
+    schlafen:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f62_Aktivit%C3%A4ten__Schlafen.svg',
+    'körperliche arbeit':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7f_Aktivit%C3%A4ten__K%C3%B6rperliche%20Arbeit.svg',
+    feiern:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5f_Aktivit%C3%A4ten__Feiern.svg',
+    êntspannen:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5c_Aktivit%C3%A4ten__Entspannen.svg',
+    'musik/tv/spielen':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7b_Aktivit%C3%A4ten__Musik-TV-Spiele.svg',
+    'soziale kontakte':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f64_Aktivit%C3%A4ten__Soziale%20Kontakte.svg',
+    sport:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3e_Aktivit%C3%A4ten__Sport.svg',
+    hausarbeit:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3b_Aktivit%C3%A4ten__Hausarbeit.svg',
+    'kreative arbeit':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f60_Aktivit%C3%A4ten__Kreative%20Arbeit.svg',
+    'essen trinken':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f41_Aktivit%C3%A4ten__Essen-Trinken.svg',
+    lernen:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f36_Aktivit%C3%A4ten__Lernen.svg',
+  },
+  effect: {
+    abgeschirmt:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
+    begeisterungsfähig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
+    aktiv:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
+    empathisc:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
+    fokussieert:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
+    gesprächig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f34_Effekte_Gespr%C3%A4chig.svg',
+    glücklich:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f35_Effekte_Gl%C3%BCcklich.svg',
+    humorvoll:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
+    indifferent:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
+    'in sich gekehrt':
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
+    kreativ:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
+    motiviert:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7d_Effekte_Motiviert.svg',
+    selbstbewusst:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f32_Effekte_Selbstbewusst.svg',
+    sensibel:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f39_Effekte_Sensibel.svg',
+    schläfrig:
+      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fac_EffektSchla%CC%88frig.svg',
+  },
+} as const;
+
 // + Exports +
 export default function (showSkeleton: boolean) {
   // Values
   const state = window.KannaMaps;
   const detailsEl: HTMLElement = state.elements.productDetails;
   const communityEl: HTMLElement = state.elements.communityData;
+  const communityFullEl: HTMLElement = state.elements.communityDataFull;
   const apothecariesPopupEl: HTMLElement = state.elements.apothecariesPopup;
   const topApothecariesListEl: HTMLElement = state.elements.topApothecariesList;
   const allApothecariesListEl: HTMLElement = state.elements.allApothecariesList;
@@ -78,6 +306,7 @@ export default function (showSkeleton: boolean) {
     console.log('rendering');
     renderProductDetails(detailsEl, data);
     renderCommunityData(communityEl, data);
+    renderCommunityDataFull(communityFullEl, data);
     renderApothecariesPopup(apothecariesPopupEl, data);
     renderTopApothecaries(topApothecariesListEl, data);
     renderAllApothecaries(allApothecariesListEl, data);
@@ -324,27 +553,59 @@ function renderProductDetails(parentEl: HTMLElement, data: any) {
   });
 
   // top area of application
-  const topAreaOfApplication = getAreasOfApplication(
+  const topAreaOfApplications = getAreasOfApplication(
     data.data.community_data.detailed.area_of_application
-  )[0];
-  const topAreaOfApplicationEl = parentEl.querySelector<HTMLElement>(
+  );
+  const topAreaOfApplicationsEls = parentEl.querySelectorAll<HTMLElement>(
     '[c-el="area-of-application"]'
   );
 
-  if (topAreaOfApplicationEl) {
-    topAreaOfApplicationEl.innerHTML = topAreaOfApplication
-      ? topAreaOfApplication.name
-      : 'n.v.';
+  if (topAreaOfApplicationsEls) {
+    topAreaOfApplicationsEls.forEach((el, index) => {
+      const topAreaOfApplication = topAreaOfApplications[index];
+      const topAreaOfApplicationEl =
+        el.querySelector<HTMLElement>('[c-el="name"]');
+      const topAreaOfApplicationPercentageEl = el.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!topAreaOfApplicationEl || !topAreaOfApplicationPercentageEl) return;
+
+      topAreaOfApplicationEl.innerHTML = topAreaOfApplication
+        ? topAreaOfApplication.name
+        : 'n.v.';
+      topAreaOfApplicationPercentageEl.innerHTML = topAreaOfApplication
+        ? `(${topAreaOfApplication.percentage}%)`
+        : '(-)';
+    });
   }
 
-  // top effect
-  const topEffect = getPositiveEffects(
+  // top effects
+  const topEffects = getPositiveEffects(
     data.data.community_data.detailed.positive_effects
-  )[0];
-  const topEffectEl = parentEl.querySelector<HTMLElement>('[c-el="effect"]');
+  );
+  const topEffectsEls =
+    parentEl.querySelectorAll<HTMLElement>('[c-el="effect"]');
 
-  if (topEffectEl) {
-    topEffectEl.innerHTML = topEffect ? topEffect.name : 'n.v.';
+  if (topEffectsEls) {
+    topEffectsEls.forEach((el, index) => {
+      const topEffect = topEffects[index];
+      const topEffectEl = el.querySelector<HTMLElement>('[c-el="name"]');
+      const topEffectPercentageEl = el.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+      const topEffectIconEl = el.querySelector<HTMLImageElement>('img');
+
+      if (!topEffectEl || !topEffectPercentageEl || !topEffectIconEl) return;
+
+      topEffectEl.innerHTML = topEffect ? topEffect.name : 'n.v.';
+      topEffectPercentageEl.innerHTML = topEffect
+        ? `(${topEffect.percentage}%)`
+        : '(-)';
+      topEffectIconEl.src =
+        (topEffect && ICONS_MAP.effect[topEffect.name.toLowerCase()]) ||
+        topEffectIconEl.src;
+    });
   }
 
   // top taste
@@ -410,8 +671,175 @@ function renderStars(parentEl: HTMLElement, rating: number, ratings: number) {
   }
 }
 
+function renderCommunityDataFull(parentEl: HTMLElement, data: any) {
+  // effects
+  const effects = getPositiveEffects(
+    data.data.community_data.detailed.positive_effects
+  );
+  const effectTemplateEl =
+    parentEl.querySelector<HTMLElement>('[c-el="effect"]');
+
+  if (effectTemplateEl) {
+    const parentEl = effectTemplateEl.parentElement;
+
+    effects.forEach((effect, index) => {
+      const effectEl = effectTemplateEl.cloneNode(true) as HTMLElement;
+      const effectNameEl = effectEl.querySelector<HTMLElement>('[c-el="name"]');
+      const effectPercentageEl = effectEl.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!effectNameEl || !effectPercentageEl) return;
+
+      effectNameEl.innerHTML = effect.name + ' ';
+      effectPercentageEl.innerHTML = `(${effect.percentage}%)`;
+      parentEl?.appendChild(effectEl);
+    });
+
+    effectTemplateEl.remove();
+  }
+
+  // side effects
+  const sideEffects = getSideEffects(
+    data.data.community_data.detailed.side_effects
+  );
+  const sideEffectTemplateEl = parentEl.querySelector<HTMLElement>(
+    '[c-el="side-effect"]'
+  );
+
+  if (sideEffectTemplateEl) {
+    const parentEl = sideEffectTemplateEl.parentElement;
+
+    sideEffects.forEach((sideEffect, index) => {
+      const sideEffectEl = sideEffectTemplateEl.cloneNode(true) as HTMLElement;
+      const sideEffectNameEl =
+        sideEffectEl.querySelector<HTMLElement>('[c-el="name"]');
+      const sideEffectPercentageEl = sideEffectEl.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!sideEffectNameEl || !sideEffectPercentageEl) return;
+
+      sideEffectNameEl.innerHTML = sideEffect.name + ' ';
+      sideEffectPercentageEl.innerHTML = `(${sideEffect.percentage}%)`;
+      parentEl?.appendChild(sideEffectEl);
+    });
+
+    sideEffectTemplateEl.remove();
+  }
+
+  // activities
+  const activities = getActivities(
+    data.data.community_data.detailed.activities
+  );
+  const activitiyTemplateEl =
+    parentEl.querySelector<HTMLElement>('[c-el="activity"]');
+
+  if (activitiyTemplateEl) {
+    const parentEl = activitiyTemplateEl.parentElement;
+
+    activities.forEach((activity, index) => {
+      const activityEl = activitiyTemplateEl.cloneNode(true) as HTMLElement;
+      const activityNameEl =
+        activityEl.querySelector<HTMLElement>('[c-el="name"]');
+      const activityPercentageEl = activityEl.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!activityNameEl || !activityPercentageEl) return;
+
+      activityNameEl.innerHTML = activity.name + ' ';
+      activityPercentageEl.innerHTML = `(${activity.percentage}%)`;
+      parentEl?.appendChild(activityEl);
+    });
+
+    activitiyTemplateEl.remove();
+  }
+
+  // tastes
+  const tastes = getTastes(data.data.community_data.detailed.taste);
+  const tasteTemplateEl = parentEl.querySelector<HTMLElement>('[c-el="taste"]');
+
+  if (tasteTemplateEl) {
+    const parentEl = tasteTemplateEl.parentElement;
+
+    tastes.forEach((taste, index) => {
+      const tasteEl = tasteTemplateEl.cloneNode(true) as HTMLElement;
+      const tasteNameEl = tasteEl.querySelector<HTMLElement>('[c-el="name"]');
+      const tastePercentageEl = tasteEl.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!tasteNameEl || !tastePercentageEl) return;
+
+      tasteNameEl.innerHTML = taste.name + ' ';
+      tastePercentageEl.innerHTML = `(${taste.percentage}%)`;
+      parentEl?.appendChild(tasteEl);
+    });
+
+    tasteTemplateEl.remove();
+  }
+
+  // areas of application
+  const areasOfApplication = getAreasOfApplication(
+    data.data.community_data.detailed.area_of_application
+  );
+  const areaOfApplicationTemplateEl = parentEl.querySelector<HTMLElement>(
+    '[c-el="area-of-application"]'
+  );
+
+  if (areaOfApplicationTemplateEl) {
+    const parentEl = areaOfApplicationTemplateEl.parentElement;
+
+    areasOfApplication.forEach((areaOfApplication, index) => {
+      const areaOfApplicationEl = areaOfApplicationTemplateEl.cloneNode(
+        true
+      ) as HTMLElement;
+      const areaOfApplicationNameEl =
+        areaOfApplicationEl.querySelector<HTMLElement>('[c-el="name"]');
+      const areaOfApplicationPercentageEl =
+        areaOfApplicationEl.querySelector<HTMLElement>('[c-el="percentage"]');
+
+      if (!areaOfApplicationNameEl || !areaOfApplicationPercentageEl) return;
+
+      areaOfApplicationNameEl.innerHTML = areaOfApplication.name + ' ';
+      areaOfApplicationPercentageEl.innerHTML = `(${areaOfApplication.percentage}%)`;
+      parentEl?.appendChild(areaOfApplicationEl);
+    });
+
+    areaOfApplicationTemplateEl.remove();
+  }
+
+  // qualities
+  const qualities = getQualities(data.data.community_data.detailed.quality);
+  const qualityTemplateEl =
+    parentEl.querySelector<HTMLElement>('[c-el="quality"]');
+
+  if (qualityTemplateEl) {
+    const parentEl = qualityTemplateEl.parentElement;
+
+    qualities.forEach((quality, index) => {
+      const qualityEl = qualityTemplateEl.cloneNode(true) as HTMLElement;
+      const qualityNameEl =
+        qualityEl.querySelector<HTMLElement>('[c-el="name"]');
+      const qualityPercentageEl = qualityEl.querySelector<HTMLElement>(
+        '[c-el="percentage"]'
+      );
+
+      if (!qualityNameEl || !qualityPercentageEl) return;
+
+      qualityNameEl.innerHTML = quality.name + ' ';
+      qualityPercentageEl.innerHTML = `(${quality.percentage}%)`;
+      parentEl?.appendChild(qualityEl);
+    });
+
+    qualityTemplateEl.remove();
+  }
+}
+
 function renderCommunityData(parentEl: HTMLElement, data: any) {
   // effects
+  console.log('rendering community data');
   const effects = getPositiveEffects(
     data.data.community_data.detailed.positive_effects
   );
@@ -424,13 +852,19 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       '[c-el="percentage"]'
     );
     const effectLinkEl = el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const effectIconEl = el.querySelector<HTMLImageElement>('img');
 
-    if (!effectNameEl || !effectPercentageEl || !effectLinkEl) return;
+    if (!effectNameEl || !effectPercentageEl || !effectLinkEl || !effectIconEl)
+      return;
 
     if (effect) {
       effectNameEl.innerHTML = effect.name;
       effectPercentageEl.innerHTML = `(${effect.percentage}%)`;
-      effectLinkEl.href = `/?effekt=${slugify(effect.name)}`;
+      effectLinkEl.href = `${PRODUCT_LIST_PAGE}/?effekt=${slugify(
+        effect.name
+      )}`;
+      effectIconEl.src =
+        ICONS_MAP.effect[effect.name.toLowerCase()] || effectIconEl.src;
     } else {
       effectNameEl.innerHTML = 'n.v.';
       effectPercentageEl.innerHTML = '(-)';
@@ -453,14 +887,25 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     );
     const sideEffectLinkEl =
       el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const sideEffectIconEl = el.querySelector<HTMLImageElement>('img');
 
-    if (!sideEffectNameEl || !sideEffectPercentageEl || !sideEffectLinkEl)
+    if (
+      !sideEffectNameEl ||
+      !sideEffectPercentageEl ||
+      !sideEffectLinkEl ||
+      !sideEffectIconEl
+    )
       return;
 
     if (sideEffect) {
       sideEffectNameEl.innerHTML = sideEffect.name;
       sideEffectPercentageEl.innerHTML = `(${sideEffect.percentage}%)`;
-      sideEffectLinkEl.href = `/?nebenwirkung=${slugify(sideEffect.name)}`;
+      sideEffectLinkEl.href = `${PRODUCT_LIST_PAGE}/?nebenwirkung=${slugify(
+        sideEffect.name
+      )}`;
+      sideEffectIconEl.src =
+        ICONS_MAP['side-effect']?.[sideEffect.name.toLowerCase()] ||
+        sideEffectIconEl.src;
     } else {
       sideEffectNameEl.innerHTML = 'n.v.';
       sideEffectPercentageEl.innerHTML = '(-)';
@@ -481,13 +926,24 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       '[c-el="percentage"]'
     );
     const activityLinkEl = el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const activityIconEl = el.querySelector<HTMLImageElement>('img');
 
-    if (!activityNameEl || !activityPercentageEl || !activityLinkEl) return;
+    if (
+      !activityNameEl ||
+      !activityPercentageEl ||
+      !activityLinkEl ||
+      !activityIconEl
+    )
+      return;
 
     if (activity) {
       activityNameEl.innerHTML = activity.name;
       activityPercentageEl.innerHTML = `(${activity.percentage}%)`;
-      activityLinkEl.href = `/?aktivität=${slugify(activity.name)}`;
+      activityLinkEl.href = `${PRODUCT_LIST_PAGE}/?aktivität=${slugify(
+        activity.name
+      )}`;
+      activityIconEl.src =
+        ICONS_MAP.activity[activity.name.toLowerCase()] || activityIconEl.src;
     } else {
       activityNameEl.innerHTML = 'n.v.';
       activityPercentageEl.innerHTML = '(-)';
@@ -505,13 +961,19 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       '[c-el="percentage"]'
     );
     const tasteLinkEl = el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const tasteIconEl = el.querySelector<HTMLImageElement>('img');
 
-    if (!tasteNameEl || !tastePercentageEl || !tasteLinkEl) return;
+    if (!tasteNameEl || !tastePercentageEl || !tasteLinkEl || !tasteIconEl)
+      return;
 
     if (taste) {
       tasteNameEl.innerHTML = taste.name;
       tastePercentageEl.innerHTML = `(${taste.percentage}%)`;
-      tasteLinkEl.href = `/?geschmack=${slugify(taste.name)}`;
+      tasteLinkEl.href = `${PRODUCT_LIST_PAGE}/?geschmack=${slugify(
+        taste.name
+      )}`;
+      tasteIconEl.src =
+        ICONS_MAP.taste[taste.name.toLowerCase()] || tasteIconEl.src;
     } else {
       tasteNameEl.innerHTML = 'n.v.';
       tastePercentageEl.innerHTML = '(-)';
@@ -535,20 +997,26 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     );
     const areaOfApplicationLinkEl =
       el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const areaOfApplicationIconEl = el.querySelector<HTMLImageElement>('img');
 
     if (
       !areaOfApplicationNameEl ||
       !areaOfApplicationPercentageEl ||
-      !areaOfApplicationLinkEl
+      !areaOfApplicationLinkEl ||
+      !areaOfApplicationIconEl
     )
       return;
 
     if (areaOfApplication) {
       areaOfApplicationNameEl.innerHTML = areaOfApplication.name;
       areaOfApplicationPercentageEl.innerHTML = `(${areaOfApplication.percentage}%)`;
-      areaOfApplicationLinkEl.href = `/?anwendungsgebiet=${slugify(
+      areaOfApplicationLinkEl.href = `${PRODUCT_LIST_PAGE}/?anwendungsgebiet=${slugify(
         areaOfApplication.name
       )}`;
+      areaOfApplicationIconEl.src =
+        ICONS_MAP['area-of-application']?.[
+          areaOfApplication.name.toLowerCase()
+        ] || areaOfApplicationIconEl.src;
     } else {
       areaOfApplicationNameEl.innerHTML = 'n.v.';
       areaOfApplicationPercentageEl.innerHTML = '(-)';
@@ -567,13 +1035,24 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
       '[c-el="percentage"]'
     );
     const qualityLinkEl = el.querySelector<HTMLAnchorElement>('[c-el="link"]');
+    const qualityIconEl = el.querySelector<HTMLImageElement>('img');
 
-    if (!qualityNameEl || !qualityPercentageEl || !qualityLinkEl) return;
+    if (
+      !qualityNameEl ||
+      !qualityPercentageEl ||
+      !qualityLinkEl ||
+      !qualityIconEl
+    )
+      return;
 
     if (quality) {
       qualityNameEl.innerHTML = quality.name;
       qualityPercentageEl.innerHTML = `(${quality.percentage}%)`;
-      qualityLinkEl.href = `/?qualität=${slugify(quality.name)}`;
+      qualityLinkEl.href = `${PRODUCT_LIST_PAGE}/?qualität=${slugify(
+        quality.name
+      )}`;
+      qualityIconEl.src =
+        ICONS_MAP.quality[quality.name.toLowerCase()] || qualityIconEl.src;
     } else {
       qualityNameEl.innerHTML = 'n.v.';
       qualityPercentageEl.innerHTML = '(-)';
