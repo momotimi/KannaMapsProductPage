@@ -8,7 +8,7 @@ const PRODUCT_LIST_PAGE = '/old-home';
 
 const ICONS_MAP = {
   'side-effect': {
-    aggression:
+    agression:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa038_Nebenwirkungen__Agression.svg',
     appetitsteigerung:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa03d_Nebenwirkungen__Appetitsteigerung.svg',
@@ -22,7 +22,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00c_Nebenwirkungen__Unruhe.svg',
     antrieblosigkiet:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff3_Nebenwirkungen__Antriebslosigkeit.svg',
-    traurigkiet:
+    traurigkeit:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa017_Nebenwirkungen__Traurigkeit.svg',
     kreislaufbeschwerden:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa015_Nebenwirkungen__Kreislaufbeschwerden.svg',
@@ -44,7 +44,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff5_Nebenwirkungen__Atemwegsreizung.svg',
     euphorisch:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3f_Effekte_Euphorisch.svg',
-    entspannt:
+    entspannen:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f24_Effekte_Entspannt.svg',
     empathisch:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
@@ -56,7 +56,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f40_Effekte_Indifferent.svg',
     abgeschirmt:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
-    fokussiert:
+    'konzentrations und fokussierungsstörung':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
     aktiv:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f37_Effekte_Aktiv.svg',
@@ -106,7 +106,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7c_Erdig_Tabak.svg',
     'erdig tee':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa0_Erdig_Tee.svg',
-    'erdig erdnuss':
+    nussig:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc5_Erdig_Erdnuss.svg',
     'spicy ':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa1_Spicy_Spicy.svg',
@@ -152,23 +152,23 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc3_Geschmack_Gew%C3%BCrze.svg',
   },
   quality: {
-    'zu kleine buds':
+    'kleine buds':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcb_Qualit%C3%A4t_Zu%20kleine%20Buds.svg',
     'genau richtig':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ffa_Qualit%C3%A4t_Genau%20richtig.svg',
-    'hoher anteil stegen':
+    'hoher anteil stängel':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe8_Qualit%C3%A4t_Hoher%20Anteil%20Stengel.svg',
-    schimmel:
+    schimmelig:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc4_Qualit%C3%A4t_Schimmel.svg',
-    'sehr fest':
+    'zu fest':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fca_Qualit%C3%A4t_Sehr%20fest.svg',
-    'zu große buds':
+    'große buds':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc2_Qualit%C3%A4t_Zu%20gro%C3%9Fe%20Buds.svg',
-    'sehr klebrig':
+    'zu klebrig':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcc_Qualit%C3%A4t_Sehr%20klebrig.svg',
     'samen in der blüte':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fbf_Qualit%C3%A4t_Samen%20in%20der%20Bl%C3%BCte.svg',
-    'sehr trocken':
+    'zu trocken':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc8_Qualit%C3%A4t_Sehr%20trocken.svg',
   },
   activity: {
@@ -180,19 +180,19 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7f_Aktivit%C3%A4ten__K%C3%B6rperliche%20Arbeit.svg',
     feiern:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5f_Aktivit%C3%A4ten__Feiern.svg',
-    êntspannen:
+    entspannen:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5c_Aktivit%C3%A4ten__Entspannen.svg',
-    'musik/tv/spielen':
+    'musik/fernsehen/spiele':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7b_Aktivit%C3%A4ten__Musik-TV-Spiele.svg',
     'soziale kontakte':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f64_Aktivit%C3%A4ten__Soziale%20Kontakte.svg',
     sport:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3e_Aktivit%C3%A4ten__Sport.svg',
-    hausarbeit:
+    haushalt:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3b_Aktivit%C3%A4ten__Hausarbeit.svg',
     'kreative arbeit':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f60_Aktivit%C3%A4ten__Kreative%20Arbeit.svg',
-    'essen trinken':
+    'essen/trinken':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f41_Aktivit%C3%A4ten__Essen-Trinken.svg',
     lernen:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f36_Aktivit%C3%A4ten__Lernen.svg',
@@ -202,7 +202,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
     begeisterungsfähig:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
-    aktiv:
+    aktivität:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
     empathisc:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
@@ -218,7 +218,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
     'in sich gekehrt':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
-    kreativ:
+    'kreative arbeit':
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
     motiviert:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7d_Effekte_Motiviert.svg',
