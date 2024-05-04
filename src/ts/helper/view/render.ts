@@ -20,7 +20,7 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff2_Nebenwirkungen__Vergesslichkeit.svg',
     unruhe:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00c_Nebenwirkungen__Unruhe.svg',
-    antrieblosigkiet:
+    antriebslosigkeit:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff3_Nebenwirkungen__Antriebslosigkeit.svg',
     traurigkeit:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa017_Nebenwirkungen__Traurigkeit.svg',
@@ -202,11 +202,11 @@ const ICONS_MAP = {
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
     begeisterungsfähig:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
-    aktivität:
+    aktiv:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
     empathisc:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
-    fokussieert:
+    fokussiert:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
     gesprächig:
       'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f34_Effekte_Gespr%C3%A4chig.svg',
