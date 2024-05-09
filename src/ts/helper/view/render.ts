@@ -9,225 +9,221 @@ const PRODUCT_LIST_PAGE = '/old-home';
 const ICONS_MAP = {
   'side-effect': {
     agression:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa038_Nebenwirkungen__Agression.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2596b_Nebenwirkungen__Agression%20(1).svg',
     appetitsteigerung:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa03d_Nebenwirkungen__Appetitsteigerung.svg',
-    'appetitsminderung/-losigkeit':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa035_Nebenwirkungen__Appetitlosigkeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259d1_Nebenwirkungen__Appetitsteigerung.svg',
+    appetitminderung:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259b3_Nebenwirkungen__Appetitlosigkeit%20(1).svg',
     angst:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00d_Nebenwirkungen__Angst.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25920_Nebenwirkungen__Angst%20(1).svg',
     vergesslichkeit:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff2_Nebenwirkungen__Vergesslichkeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259b4_Nebenwirkungen__Vergesslichkeit.svg',
     unruhe:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa00c_Nebenwirkungen__Unruhe.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25992_Nebenwirkungen__Unruhe.svg',
     antriebslosigkeit:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff3_Nebenwirkungen__Antriebslosigkeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25922_Nebenwirkungen__Antriebslosigkeit%20(1).svg',
     traurigkeit:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa017_Nebenwirkungen__Traurigkeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2599b_Nebenwirkungen__Traurigkeit.svg',
     kreislaufbeschwerden:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa015_Nebenwirkungen__Kreislaufbeschwerden.svg',
-    onbstipation:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff7_Nebenwirkungen__Obstipation.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259a7_Nebenwirkungen__Kreislaufbeschwerden.svg',
+    obstipation:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259ad_Nebenwirkungen__Obstipation.svg',
     schwindel:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe5_Nebenwirkungen__Schwindel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259c5_Nebenwirkungen__Schwindel.svg',
     halluzination:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fef_Nebenwirkungen__Halluzination.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259c3_Nebenwirkungen__Halluzination.svg',
     durchfall:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcf_Nebenwirkungen__Durchfall.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25925_Nebenwirkungen__Durchfall.svg',
     reizempfindlichkeit:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa031_Nebenwirkungen__Reizempfindlichkeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259ca_Nebenwirkungen__Reizempfindlichkeit.svg',
     schwitzen:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff0_Nebenwirkungen__Schwitzen.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259b5_Nebenwirkungen__Schwitzen.svg',
     derealisation:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8aa011_Nebenwirkungen__Derealisation.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259b0_Nebenwirkungen__Derealisation.svg',
     atemwegsreizung:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ff5_Nebenwirkungen__Atemwegsreizung.svg',
-    euphorisch:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3f_Effekte_Euphorisch.svg',
-    entspannen:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f24_Effekte_Entspannt.svg',
-    empathisch:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
-    selbstbewusst:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f32_Effekte_Selbstbewusst.svg',
-    motiviert:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7d_Effekte_Motiviert.svg',
-    indifferent:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f40_Effekte_Indifferent.svg',
-    abgeschirmt:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
-    'konzentrations und fokussierungsstörung':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
-    aktiv:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f37_Effekte_Aktiv.svg',
-    musikalisch:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f1f_Effekte_Musikalisch.svg',
-    humorvoll:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
-    kreativ:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f21_Effekte_Kreativ.svg',
-    sensibel:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f39_Effekte_Sensibel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25909_Nebenwirkungen__Atemwegsreizung.svg',
+    'ich störung':
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25968_Nebenwirkungen__Ich%20St%C3%B6rung.svg',
+    müdigkeit:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2598e_Nebenwirkungen__M%C3%BCdigkeit%20(1).svg',
+    'paranoide gedanken':
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25997_Nebenwirkungen__Paranoide%20Gedanken.svg',
+    parästhesien:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259cf_Nebenwirkungen__Par%C3%A4stesien.svg',
+    übelkeit:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25962_Nebenwirkungen__%C3%9Cbelkeit.svg',
+    'trockener mund':
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25965_Nebenwirkungen__Trockener%20Mund.svg',
+    'vermehrter durst':
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2598c_Nebenwirkungen__Vermehrter%20Durst.svg',
+    völlegefühl:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259d2_Nebenwirkungen__V%C3%B6llegef%C3%BChl.svg',
+    'rote augen':
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2598b_Nebenwirkungen__Rote%20Augen.svg',
   },
   taste: {
     salzig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fad_Geschmack_Salzig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2598f_Geschmack_Salzig.svg',
     pflanzlich:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9faf_Geschmack_Pflanzlich.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25904_Geschmack_Pflanzlich.svg',
     milchig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc0_Geschmack_Milchig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25950_Geschmack_Milchig.svg',
     chemisch:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe6_Geschmack_Chemisch.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2594d_Geschmack_Chemisch.svg',
     chili:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9faa_Geschmack_Chili.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2596e_Geschmack_Chili.svg',
     'citrus mandarine':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f88_Citrus_Mandarine.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba9f4b9c71711e5684d6_Citrus_Mandarine%20(1).svg',
     'citrus limette':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa5_Citrus_Limette.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba9f2dc0b4afe5a50f80_Citrus_Limette%20(1).svg',
     'fruchtig waldbeere':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f82_Fruchtig_Waldbeere.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba9c6ef3a0601bba696d_Fruchtig_Waldbeere%20(1).svg',
     pflaume:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc7_Fruchtig_Pflaume.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25966_Fruchtig_Pflaume.svg',
     citrus:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa2_Citrus_Citrus.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25900_Citrus_Citrus.svg',
     'fruchtig ':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa3_Fruchtig_Fruchtig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258e3_Fruchtig_Fruchtig.svg',
     'fruchtig melone':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc9_Fruchtig_Melone.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25951_Fruchtig_Melone.svg',
     'fruchtig pfirsich':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa6_Fruchtig_Pfirsich.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2590b_Fruchtig_Pfirsich.svg',
     'erdig walnuss':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f81_Erdig_Walnuss.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba9cf277db00b1915961_Erdig_Walnuss%20(1).svg',
     'fruchtig mango':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa7_Fruchtig_Mango.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25967_Fruchtig_Mango.svg',
     'fruchtig ananas':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f79_Fruchtig_Ananas.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258dc_Fruchtig_Ananas.svg',
     'erdig tabak':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7c_Erdig_Tabak.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c6_Erdig_Tabak.svg',
     'erdig tee':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa0_Erdig_Tee.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25907_Erdig_Tee.svg',
     nussig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc5_Erdig_Erdnuss.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2594f_Erdig_Erdnuss.svg',
     'spicy ':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa1_Spicy_Spicy.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2591e_Spicy_Spicy.svg',
     'spicy chili':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f87_Spicy_Chilli.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d4_Spicy_Chilli.svg',
     'spicy minze':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f84_Spicy_Minze.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2594c_Spicy_Minze.svg',
     'spicy pfeffer':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f86_Spicy_Pfeffer.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2591d_Spicy_Pfeffer.svg',
     'cremig butter':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fa9_Cremig_Butter.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2590d_Cremig_Butter.svg',
     'gassy meersalz':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7a_Gassy_Meersalz.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c9_Gassy_Meersalz.svg',
     'gassy ':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f66_Gassy_Gassy.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c4_Gassy_Gassy.svg',
     'cremig blauschimmel':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f68_Cremig_Blauschimmel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25996_Cremig_Blauschimmel.svg',
     'gassy ammoniak':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f80_Gassy_Ammoniak.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25928_Gassy_Ammoniak.svg',
     'blumig kirsche':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6c_Blumig_Kirsche.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d8_Blumig_Kirsche.svg',
     'blumig flieder':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f89_Blumig_Flieder.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25901_Blumig_Flieder.svg',
     'blumig zitronengras':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f83_Blumig_Zitronengras.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d5_Blumig_Zitronengras.svg',
     'gassy metallisch':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f61_Gassy_Metallisch.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c5_Gassy_Metallisch.svg',
     'blumig jasmin':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f69_Blumig_Jasmin.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2594a_Blumig_Jasmin.svg',
     'cremig sahne':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6b_Cremig_Sahne.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2589b_Cremig_Sahne.svg',
     'citrus marakuja':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f85_Citrus_Marakuja.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2591b_Citrus_Marakuja.svg',
     blumig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5e_Blumig_Blumig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25890_Blumig_Blumig.svg',
     'citrus zitrone':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f65_Citrus_Zitrone.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258be_Citrus_Zitrone.svg',
     cremig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f6a_Cremig_Cremig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c0_Cremig_Cremig.svg',
     kräuter:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc8_Qualit%C3%A4t_Sehr%20trocken.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25970_Geschmack_Kr%C3%A4uter.svg',
     gewürze:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc3_Geschmack_Gew%C3%BCrze.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25921_Geschmack_Gew%C3%BCrze.svg',
   },
   quality: {
     'kleine buds':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcb_Qualit%C3%A4t_Zu%20kleine%20Buds.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25923_Qualit%C3%A4t_Zu%20kleine%20Buds.svg',
     'genau richtig':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9ffa_Qualit%C3%A4t_Genau%20richtig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259cd_Qualit%C3%A4t_Genau%20richtig.svg',
     'hoher anteil stängel':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fe8_Qualit%C3%A4t_Hoher%20Anteil%20Stengel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25903_Qualit%C3%A4t_Hoher%20Anteil%20Stengel.svg',
     schimmelig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc4_Qualit%C3%A4t_Schimmel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25905_Qualit%C3%A4t_Schimmel.svg',
     'zu fest':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fca_Qualit%C3%A4t_Sehr%20fest.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e259ce_Qualit%C3%A4t_Sehr%20fest.svg',
     'große buds':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc2_Qualit%C3%A4t_Zu%20gro%C3%9Fe%20Buds.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d7_Qualit%C3%A4t_Zu%20gro%C3%9Fe%20Buds.svg',
     'zu klebrig':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fcc_Qualit%C3%A4t_Sehr%20klebrig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25927_Qualit%C3%A4t_Sehr%20klebrig.svg',
     'samen in der blüte':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fbf_Qualit%C3%A4t_Samen%20in%20der%20Bl%C3%BCte.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2592a_Qualit%C3%A4t_Sehr%20trocken.svg',
     'zu trocken':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fc8_Qualit%C3%A4t_Sehr%20trocken.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2592a_Qualit%C3%A4t_Sehr%20trocken.svg',
+    microseeds:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2591a_Qualit%C3%A4t_Samen%20in%20der%20Bl%C3%BCte.svg',
   },
   activity: {
     'geistige arbeit':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f63_Aktivit%C3%A4ten__Geistige%20Arbeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258bd_Aktivit%C3%A4ten__Geistige%20Arbeit.svg',
     schlafen:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f62_Aktivit%C3%A4ten__Schlafen.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba96c3807bba7bfd88f1_Aktivit%C3%A4ten_Schlafen.svg',
     'körperliche arbeit':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7f_Aktivit%C3%A4ten__K%C3%B6rperliche%20Arbeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2589a_Aktivit%C3%A4ten__K%C3%B6rperliche%20Arbeit.svg',
     feiern:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5f_Aktivit%C3%A4ten__Feiern.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258dd_Aktivit%C3%A4ten__Feiern.svg',
     entspannen:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f5c_Aktivit%C3%A4ten__Entspannen.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25893_Aktivit%C3%A4ten__Entspannen.svg',
     'musik/fernsehen/spiele':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7b_Aktivit%C3%A4ten__Musik-TV-Spiele.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d9_Aktivit%C3%A4ten__Musik-TV-Spiele.svg',
     'soziale kontakte':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f64_Aktivit%C3%A4ten__Soziale%20Kontakte.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2590f_Aktivit%C3%A4ten__Soziale%20Kontakte.svg',
     sport:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3e_Aktivit%C3%A4ten__Sport.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25848_Aktivit%C3%A4ten__Sport.svg',
     haushalt:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3b_Aktivit%C3%A4ten__Hausarbeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2587d_Aktivit%C3%A4ten__Hausarbeit.svg',
     'kreative arbeit':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f60_Aktivit%C3%A4ten__Kreative%20Arbeit.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6638ba96b1d6847949db744e_Aktivit%C3%A4ten_Kreative%20Arbeit.svg',
     'essen/trinken':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f41_Aktivit%C3%A4ten__Essen-Trinken.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258df_Aktivit%C3%A4ten__Essen-Trinken.svg',
     lernen:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f36_Aktivit%C3%A4ten__Lernen.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2587f_Aktivit%C3%A4ten__Lernen.svg',
   },
   effect: {
     abgeschirmt:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f67_Effekte_Abgeschirmt.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c7_Effekte_Abgeschirmt.svg',
     begeisterungsfähig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258e1_Effekte_Begeisterungsf%C3%A4hig.svg',
     aktiv:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f38_Effekte_Begeisterungsf%C3%A4hig.svg',
-    empathisc:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3c_Effekte_Empathisch.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25883_Effekte_Aktiv.svg',
+    empathisch:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258bf_Effekte_Empathisch.svg',
     fokussiert:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f22_Effekte_Fokussiert.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2588e_Effekte_Fokussiert.svg',
     gesprächig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f34_Effekte_Gespr%C3%A4chig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2587b_Effekte_Gespr%C3%A4chig.svg',
     glücklich:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f35_Effekte_Gl%C3%BCcklich.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258c3_Effekte_Gl%C3%BCcklich.svg',
     humorvoll:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25896_Effekte_Humorvoll.svg',
     indifferent:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f3d_Effekte_Humorvoll.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2587c_Effekte_Indifferent.svg',
     'in sich gekehrt':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258d6_Effekte_In%20sich%20gekehrt.svg',
     'kreative arbeit':
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f33_Effekte_In%20sich%20gekehrt.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25882_Effekte_Kreativ.svg',
     motiviert:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f7d_Effekte_Motiviert.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25902_Effekte_Motiviert.svg',
     selbstbewusst:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f32_Effekte_Selbstbewusst.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25880_Effekte_Selbstbewusst.svg',
     sensibel:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9f39_Effekte_Sensibel.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e25892_Effekte_Sensibel.svg',
     schläfrig:
-      'https://uploads-ssl.webflow.com/65b512a06166d6269a8a9cc3/65b512a06166d6269a8a9fac_EffektSchla%CC%88frig.svg',
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e2591c_EffektSchla%CC%88frig.svg',
+    musikalisch:
+      'https://uploads-ssl.webflow.com/6625ff3d5c69cb2aa0e25651/6625ff3d5c69cb2aa0e258bc_Effekte_Musikalisch.svg',
   },
 } as const;
 
