@@ -1006,9 +1006,7 @@ function renderCommunityData(parentEl: HTMLElement, data: any) {
     if (areaOfApplication) {
       areaOfApplicationNameEl.innerHTML = areaOfApplication.name;
       areaOfApplicationPercentageEl.innerHTML = `(${areaOfApplication.percentage}%)`;
-      areaOfApplicationLinkEl.href = `${PRODUCT_LIST_PAGE}/?anwendungsgebiet=${slugify(
-        areaOfApplication.name
-      )}`;
+      areaOfApplicationLinkEl.href = `${PRODUCT_LIST_PAGE}`;
       areaOfApplicationIconEl.src =
         ICONS_MAP['area-of-application']?.[
           areaOfApplication.name.toLowerCase()
